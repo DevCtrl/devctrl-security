@@ -1,4 +1,4 @@
-package com.devctrl.security.handler;
+package com.devctrl.security.security.handler;
 
 import com.devctrl.security.common.dto.JwtUserDto;
 import com.devctrl.security.service.JwtService;

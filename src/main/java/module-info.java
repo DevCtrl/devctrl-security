@@ -14,4 +14,5 @@ open module com.devctrl.security {
     requires joda.time;
     requires jjwt;
     requires tomcat.embed.core;
+    requires jackson.annotations;
 }

@@ -1,4 +1,4 @@
-package com.devctrl.security.handler;
+package com.devctrl.security.security.handler;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;

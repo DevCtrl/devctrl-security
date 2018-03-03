@@ -2,6 +2,7 @@ package com.devctrl.security.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -11,6 +12,7 @@ public class JwtConfiguration {
     private String header;
     private String secret;
 
+    @Bean("jwtHeader")
     public String getHeader() {
         return header;
     }
