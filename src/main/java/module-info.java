@@ -2,6 +2,7 @@ open module com.devctrl.security {
     requires spring.aop;
     requires spring.beans;
     requires spring.boot;
+    requires spring.boot.autoconfigure;
     requires spring.context;
     requires spring.core;
     requires spring.expression;

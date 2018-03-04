@@ -42,9 +42,9 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
 
     @Override
     protected UserDetails retrieveUser(String s,
-                                       UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
-        JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) usernamePasswordAuthenticationToken;
-        String token = jwtAuthenticationToken.getToken();
+                                       UsernamePasswordAuthenticationToken authenticationToken) throws AuthenticationException {
+        JwtAuthenticationToken jwtAuthenticationToken = authenticationToken == null ? null : (JwtAuthenticationToken) authenticationToken;
+        String token = jwtAuthenticationToken == null ? null: jwtAuthenticationToken.getToken();
 
         JwtUserDto parsedUser = jwtService.parseToken(token);
 
@@ -52,7 +52,8 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
             throw new JwtTokenMalformedException("JWT token is not valid");
         }
 
-        List<GrantedAuthority> authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(parsedUser.getRole());
+        List<GrantedAuthority> authorityList = AuthorityUtils
+                .commaSeparatedStringToAuthorityList(parsedUser.getRole());
 
         return new AuthenticatedUser(parsedUser.getUsername(), token, authorityList);
     }
